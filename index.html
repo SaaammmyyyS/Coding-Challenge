@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<title>Coding Challenge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html{
+        text-align: center;
+    }
+    body,h1 {font-family: "Montserrat", sans-serif}
+    img {margin-bottom: -7px}
+    .w3-row-padding img {margin-bottom: 12px}
+
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 50px auto;
+    }
+    table, th, td{
+        border: 2px solid gray;
+        padding: 2px;
+    }
+
+</style>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-black w3-animate-top w3-xxlarge" style="display:none;padding-top:150px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
+        <i class="fa fa-remove"></i>
+    </a>
+    <div class="w3-bar-block w3-center">
+        <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
+        <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Contact</a>
+    </div>
+    </nav>
+
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <div class="w3-opacity">
+    <span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span> 
+    <div class="w3-clear"></div>
+    <header class="w3-center w3-margin-bottom">
+    <h1><b>ARISEN Part 4: Coding Challenge</b></h1>
+    <p><b>Create a table to display users, a form to add users and a button to remove users.</p>
+    </header>
+
+    <div id="container">
+        <div class="input">Name: <input id = "name" type="text" placeholder="John Smith" /></div>
+        <div class="input">Gender: <input id = "gender" type="text" placeholder="Male" /></div>
+        <div class="input">Age: <input id = "age" type="number" placeholder="18" /></div>
+
+        <button id = "entry" onclick="addUser()">Add User</button>
+
+        <div class="input">Delete Item: <input id = "Enterdelete" type = "number" placeholder="1" />
+            <button id="delete" onclick="DeleteItem()">Delete</button>
+        </div>
+
+    </div>
+
+    <table id = "display">
+        <tr id = "tables">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+        </tr>
+    </table>
+    
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-github"></i>
+</footer>
+ 
+<script>
+    var entry = document.getElementById("entry")
+    entry.addEventListener("click", displayDetails);
+
+    var row = 1;
+
+    function displayDetails(){
+        var name = document.getElementById("name").value;
+        var gender = document.getElementById("gender").value;
+        var age = document.getElementById("age").value;
+        if(!name || !gender || !age){
+            alert("Please fill all the boxes");
+            return;
+        }
+
+        var display = document.getElementById("display");
+
+        var newRow = display.insertRow(row);
+
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+
+        cell1.innerHTML = row;
+        cell2.innerHTML = name;
+        cell3.innerHTML = gender;
+        cell4.innerHTML = age;  
+
+        row++;
+    }
+    function DeleteItem() {
+        let numRow = document.getElementById("Enterdelete").value;
+        document.getElementById("display").deleteRow(numRow);
+    }
+
+    function myFunction() {
+
+        var x = document.getElementById("myGrid");
+        if (x.className === "w3-row") {
+            x.className = "w3-row-padding";
+        } else {
+            x.className = x.className.replace("w3-row-padding", "w3-row");
+        }
+    }
+
+    // Open and close sidebar
+    function w3_open() {
+    document.getElementById("mySidebar").style.width = "100%";
+    document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    }
+
+</script>
+</body>
+</html>
